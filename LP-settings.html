@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ランディングページ要求定義書</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .form-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #374151;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        label.input-label {
+            display: block;
+            font-weight: 500;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+        .input-field, .textarea-field {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .input-field:focus, .textarea-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+        .checkbox-input {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.5rem;
+            border-radius: 0.25rem;
+            border-color: #d1d5db;
+            color: #3b82f6;
+            cursor: pointer;
+        }
+        .note {
+            background-color: #f3f4f6;
+            border-left: 4px solid #9ca3af;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+        .note-title {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="max-w-4xl mx-auto my-10 p-8 md:p-12 bg-white rounded-xl shadow-lg">
+        <header class="text-center mb-8 pb-4 border-b">
+            <h1 class="text-3xl font-bold text-gray-800">ランディングページ要求定義書</h1>
+        </header>
+
+        <div class="note">
+            <strong class="note-title">ご記入のポイント</strong>
+            <ul class="list-disc list-inside text-sm">
+                <li>すべての項目を埋める必要はありません。わからない部分は空欄で構いません。</li>
+                <li>制作会社と相談しながら決めていけます。</li>
+                <li>具体的に書けるところは詳しく記載してください。あとで認識違いが起きにくくなります。</li>
+                <li>より良い提案を受けやすくなります。</li>
+            </ul>
+        </div>
+
+        <form id="lp-form" action="https://formspree.io/f/myzngyzy" method="POST">
+            <!-- プロジェクト概要 -->
+            <section class="form-section">
+                <h2>プロジェクト概要</h2>
+                <div class="mb-6">
+                    <label for="project_name" class="input-label">プロジェクト名</label>
+                    <input type="text" id="project_name" name="project_name" class="input-field" value="株式会社Actionary ランディングページ制作プロジェクト" readonly>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <label for="dev_period" class="input-label">制作期間</label>
+                        <input type="text" id="dev_period" name="dev_period" class="input-field" placeholder="例：4週間">
+                    </div>
+                    <div>
+                        <label for="release_date" class="input-label">公開目標</label>
+                        <input type="text" id="release_date" name="release_date" class="input-field" placeholder="例：2025年10月">
+                    </div>
+                    <div>
+                        <label for="kaizen_period" class="input-label">初期改善期間</label>
+                        <input type="text" id="kaizen_period" name="kaizen_period" class="input-field" placeholder="例：公開後4週間">
+                    </div>
+                </div>
+                <div>
+                    <label for="background" class="input-label">背景・きっかけ</label>
+                    <p class="text-sm text-gray-500 mb-2">このランディングページを作る理由を具体的に記載してください。</p>
+                    <textarea id="background" name="background" rows="6" class="textarea-field" placeholder="現在の課題：&#10;解決したいこと：&#10;期待する効果："></textarea>
+                </div>
+            </section>
+
+            <!-- 事業‧サービス概要 -->
+            <section class="form-section">
+                <h2>事業‧サービス概要</h2>
+                <div class="mb-6">
+                    <label for="service_overview" class="input-label">提供サービス‧商品</label>
+                     <p class="text-sm text-gray-500 mb-2">あなたの会社が提供しているサービスや商品について記載してください。</p>
+                    <textarea id="service_overview" name="service_overview" rows="6" class="textarea-field" placeholder="メインサービス/商品：&#10;サブサービス/商品：&#10;価格帯：&#10;提供形態（B2B/B2C/その他）："></textarea>
+                </div>
+            </section>
+
+            <!-- ランディングページの目的 -->
+            <section class="form-section">
+                <h2>ランディングページの目的</h2>
+                <p class="text-sm text-gray-500 mb-2">このランディングページで何を達成したいか、具体的に記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="lp_purpose" value="new_customer" class="checkbox-input"> 新規顧客の獲得</label>
+                    <label class="checkbox-label"><input type="checkbox" name="lp_purpose" value="existing_customer_announce" class="checkbox-input"> 既存顧客への新サービス告知</label>
+                    <label class="checkbox-label"><input type="checkbox" name="lp_purpose" value="brand_awareness" class="checkbox-input"> ブランド認知度の向上</label>
+                    <label class="checkbox-label"><input type="checkbox" name="lp_purpose" value="inquiry" class="checkbox-input"> 問い合わせ‧資料請求の増加</label>
+                    <label class="checkbox-label"><input type="checkbox" name="lp_purpose" value="sales_up" class="checkbox-input"> 売上の向上</label>
+                    <div class="flex items-center">
+                        <label class="checkbox-label"><input type="checkbox" name="lp_purpose" value="other" class="checkbox-input"> その他：</label>
+                        <input type="text" name="lp_purpose_other" class="input-field ml-2 flex-grow">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 会社‧代表の特徴 -->
+            <section class="form-section">
+                <h2>会社‧代表の特徴</h2>
+                <div class="mb-6">
+                    <label for="company_features" class="input-label">あなたの会社や代表者の特徴的な部分を記載してください</label>
+                    <textarea id="company_features" name="company_features" rows="6" class="textarea-field" placeholder="会社の理念‧ビジョン：&#10;代表者の経歴‧専門性：&#10;他社との違い‧強み：&#10;大切にしている価値観："></textarea>
+                </div>
+            </section>
+
+            <!-- ターゲット顧客 -->
+            <section class="form-section">
+                <h2>ターゲット顧客</h2>
+                <h3>メインターゲット（最も重要な顧客層）</h3>
+                 <p class="text-sm text-gray-500 mb-4">このランディングページに最も来てほしい人について具体的に記載してください。</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="input-label">年齢</label>
+                        <input type="text" name="main_target_age" class="input-field" placeholder="例：30歳〜45歳">
+                    </div>
+                    <div>
+                        <label class="input-label">性別</label>
+                        <div class="flex items-center space-x-4 mt-2">
+                             <label class="checkbox-label"><input type="checkbox" name="main_target_gender" value="male" class="checkbox-input"> 男性</label>
+                             <label class="checkbox-label"><input type="checkbox" name="main_target_gender" value="female" class="checkbox-input"> 女性</label>
+                             <label class="checkbox-label"><input type="checkbox" name="main_target_gender" value="any" class="checkbox-input"> 問わない</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="main_target_job" class="input-label">職業‧立場</label>
+                        <input type="text" id="main_target_job" name="main_target_job" class="input-field">
+                    </div>
+                    <div>
+                        <label for="main_target_income" class="input-label">年収‧予算</label>
+                        <input type="text" id="main_target_income" name="main_target_income" class="input-field">
+                    </div>
+                    <div>
+                        <label for="main_target_region" class="input-label">居住地域</label>
+                        <input type="text" id="main_target_region" name="main_target_region" class="input-field">
+                    </div>
+                    <div>
+                        <label for="main_target_sns" class="input-label">よく使うSNS‧メディア</label>
+                        <input type="text" id="main_target_sns" name="main_target_sns" class="input-field">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="main_target_problem" class="input-label">抱えている悩み‧課題</label>
+                        <textarea id="main_target_problem" name="main_target_problem" rows="4" class="textarea-field"></textarea>
+                    </div>
+                </div>
+
+                <h3>サブターゲット（2番目に重要な顧客層）</h3>
+                 <p class="text-sm text-gray-500 mb-4">余裕があれば記載してください。</p>
+                 <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="input-label">年齢</label>
+                        <input type="text" name="sub_target_age" class="input-field" placeholder="例：25歳〜35歳">
+                    </div>
+                    <div>
+                        <label class="input-label">性別</label>
+                        <div class="flex items-center space-x-4 mt-2">
+                             <label class="checkbox-label"><input type="checkbox" name="sub_target_gender" value="male" class="checkbox-input"> 男性</label>
+                             <label class="checkbox-label"><input type="checkbox" name="sub_target_gender" value="female" class="checkbox-input"> 女性</label>
+                             <label class="checkbox-label"><input type="checkbox" name="sub_target_gender" value="any" class="checkbox-input"> 問わない</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="sub_target_job" class="input-label">職業‧立場</label>
+                        <input type="text" id="sub_target_job" name="sub_target_job" class="input-field">
+                    </div>
+                     <div>
+                        <label for="sub_target_income" class="input-label">年収‧予算</label>
+                        <input type="text" id="sub_target_income" name="sub_target_income" class="input-field">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="sub_target_problem" class="input-label">抱えている悩み‧課題</label>
+                        <textarea id="sub_target_problem" name="sub_target_problem" rows="4" class="textarea-field"></textarea>
+                    </div>
+                </div>
+
+                <h3>ターゲットの行動特性</h3>
+                <p class="text-sm text-gray-500 mb-2">あなたのターゲット顧客について、思い当たることを記載してください。</p>
+                <textarea name="target_behavior" rows="5" class="textarea-field" placeholder="情報収集方法：&#10;購買決定の際に重視すること：&#10;よく利用するサービス‧商品：&#10;ライフスタイルの特徴："></textarea>
+            </section>
+
+            <!-- 競合他社との差別化ポイント -->
+            <section class="form-section">
+                <h2>競合他社との差別化ポイント</h2>
+                <h3>あなたの強み‧特徴</h3>
+                <p class="text-sm text-gray-500 mb-4">お客様があなたを選ぶ理由を3つ挙げてください。</p>
+                <div class="space-y-4">
+                    <div>
+                        <label for="strength_1" class="input-label">強み1</label>
+                        <input type="text" id="strength_1" name="strength_1" class="input-field mb-2">
+                        <textarea name="strength_1_detail" rows="2" class="textarea-field" placeholder="詳細説明："></textarea>
+                    </div>
+                    <div>
+                        <label for="strength_2" class="input-label">強み2</label>
+                        <input type="text" id="strength_2" name="strength_2" class="input-field mb-2">
+                        <textarea name="strength_2_detail" rows="2" class="textarea-field" placeholder="詳細説明："></textarea>
+                    </div>
+                    <div>
+                        <label for="strength_3" class="input-label">強み3</label>
+                        <input type="text" id="strength_3" name="strength_3" class="input-field mb-2">
+                        <textarea name="strength_3_detail" rows="2" class="textarea-field" placeholder="詳細説明："></textarea>
+                    </div>
+                </div>
+
+                <h3 class="mt-8">競合との比較</h3>
+                <p class="text-sm text-gray-500 mb-2">競合他社（同業者）と比較して、あなたの⽅が優れている点を記載してください。</p>
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>比較項目</th>
+                                <th>競合A</th>
+                                <th>競合B</th>
+                                <th>自社</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>価格</td>
+                                <td><input type="text" class="input-field"></td>
+                                <td><input type="text" class="input-field"></td>
+                                <td><input type="text" class="input-field"></td>
+                            </tr>
+                            <tr>
+                                <td>サービス内容</td>
+                                <td><input type="text" class="input-field"></td>
+                                <td><input type="text" class="input-field"></td>
+                                <td><input type="text" class="input-field"></td>
+                            </tr>
+                            <tr>
+                                <td>実績‧経験</td>
+                                <td><input type="text" class="input-field"></td>
+                                <td><input type="text" class="input-field"></td>
+                                <td><input type="text" class="input-field"></td>
+                            </tr>
+                             <tr>
+                                <td>対応スピード</td>
+                                <td><input type="text" class="input-field"></td>
+                                <td><input type="text" class="input-field"></td>
+                                <td><input type="text" class="input-field"></td>
+                            </tr>
+                             <tr>
+                                <td>アフターサポート</td>
+                                <td><input type="text" class="input-field"></td>
+                                <td><input type="text" class="input-field"></td>
+                                <td><input type="text" class="input-field"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="mt-8">お客様に伝えたい一番のメッセージ</h3>
+                <p class="text-sm text-gray-500 mb-2">一言で言うと、あなたのサービスの価値は何ですか？</p>
+                <textarea name="main_message" rows="3" class="textarea-field"></textarea>
+            </section>
+            
+            <!-- 目標設定 -->
+            <section class="form-section">
+                <h2>目標設定（何を達成したいか）</h2>
+                <h3>最も重要な目標</h3>
+                 <p class="text-sm text-gray-500 mb-2">このランディングページを見た人に、最終的に何をしてもらいたいですか？</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="main_goal" value="inquiry" class="checkbox-input"> 問い合わせ‧相談の申込み</label>
+                    <label class="checkbox-label"><input type="checkbox" name="main_goal" value="download" class="checkbox-input"> 資料請求‧ダウンロード</label>
+                    <label class="checkbox-label"><input type="checkbox" name="main_goal" value="purchase" class="checkbox-input"> 商品‧サービスの購入</label>
+                    <label class="checkbox-label"><input type="checkbox" name="main_goal" value="trial" class="checkbox-input"> 無料体験‧トライアルの申込み</label>
+                    <label class="checkbox-label"><input type="checkbox" name="main_goal" value="seminar" class="checkbox-input"> セミナー‧イベントの参加申込み</label>
+                    <label class="checkbox-label"><input type="checkbox" name="main_goal" value="newsletter" class="checkbox-input"> メルマガ‧LINE登録</label>
+                    <div class="flex items-center">
+                        <label class="checkbox-label"><input type="checkbox" name="main_goal" value="other" class="checkbox-input"> その他：</label>
+                        <input type="text" name="main_goal_other" class="input-field ml-2 flex-grow">
+                    </div>
+                </div>
+
+                <h3 class="mt-8">数値目標</h3>
+                <p class="text-sm text-gray-500 mb-2">可能であれば、具体的な数値目標を設定してください。</p>
+                 <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="monthly_target" class="input-label">月間目標件数</label>
+                        <input type="text" id="monthly_target" name="monthly_target" class="input-field" placeholder="例：30件">
+                    </div>
+                    <div>
+                        <label for="cpa_target" class="input-label">1件あたりの価値</label>
+                        <input type="text" id="cpa_target" name="cpa_target" class="input-field" placeholder="例：5,000円">
+                    </div>
+                    <div>
+                        <label for="target_date" class="input-label">達成時期</label>
+                        <input type="text" id="target_date" name="target_date" class="input-field" placeholder="例：2025年12月まで">
+                    </div>
+                </div>
+
+                <h3 class="mt-8">副次的な目標</h3>
+                <p class="text-sm text-gray-500 mb-2">メインの目標以外に期待することがあれば記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="sub_goal" value="brand" class="checkbox-input"> ブランド認知度の向上</label>
+                    <label class="checkbox-label"><input type="checkbox" name="sub_goal" value="crm" class="checkbox-input"> 既存顧客との関係強化</label>
+                    <label class="checkbox-label"><input type="checkbox" name="sub_goal" value="recruit" class="checkbox-input"> 採用活動への貢献</label>
+                    <label class="checkbox-label"><input type="checkbox" name="sub_goal" value="seo" class="checkbox-input"> SEO効果（検索順位向上）</label>
+                    <label class="checkbox-label"><input type="checkbox" name="sub_goal" value="sns" class="checkbox-input"> SNSでのシェア‧拡散</label>
+                    <div class="flex items-center">
+                        <label class="checkbox-label"><input type="checkbox" name="sub_goal" value="other" class="checkbox-input"> その他：</label>
+                        <input type="text" name="sub_goal_other" class="input-field ml-2 flex-grow">
+                    </div>
+                </div>
+            </section>
+
+            <!-- ページに掲載したい内容 -->
+            <section class="form-section">
+                <h2>ページに掲載したい内容</h2>
+                <h3>トップ部分（最初に目に入る部分）</h3>
+                <p class="text-sm text-gray-500 mb-2">訪問者が最初に⾒る部分に何を表⽰したいか記載してください。</p>
+                <textarea name="top_section_content" rows="5" class="textarea-field" placeholder="メインのキャッチコピー（案）：&#10;サブの説明文（案）：&#10;メインの画像‧動画（どんなものを使いたいか）：&#10;ボタンの文言（「お問い合わせ」「資料請求」など）："></textarea>
+
+                <h3 class="mt-8">会社‧サービス紹介</h3>
+                <p class="text-sm text-gray-500 mb-2">あなたの会社やサービスについて伝えたい内容を記載してください。</p>
+                <textarea name="service_introduction" rows="5" class="textarea-field" placeholder="会社の特徴‧強み：&#10;代表者の紹介（経歴‧想い）：&#10;サービス内容の詳細：&#10;なぜこのサービスを始めたか："></textarea>
+
+                <h3 class="mt-8">実績‧事例</h3>
+                <p class="text-sm text-gray-500 mb-2">これまでの実績や成功事例があれば記載してください。</p>
+                <textarea name="achievements" rows="5" class="textarea-field" placeholder="具体的な実績数字：&#10;お客様の成功事例：&#10;導入企業‧利用者数：&#10;受賞歴‧メディア掲載："></textarea>
+
+                <h3 class="mt-8">お客様の声</h3>
+                <p class="text-sm text-gray-500 mb-2">既存のお客様からいただいた感想があれば記載してください。</p>
+                <textarea name="testimonials" rows="5" class="textarea-field" placeholder="お客様の声1：&#10;お客様の声2：&#10;お客様の声3："></textarea>
+
+                <h3 class="mt-8">サービスの流れ</h3>
+                <p class="text-sm text-gray-500 mb-2">お客様がサービスを利用する際の流れを記載してください。</p>
+                <textarea name="service_flow" rows="6" class="textarea-field" placeholder="ステップ1：&#10;ステップ2：&#10;ステップ3：&#10;ステップ4：&#10;ステップ5："></textarea>
+
+                <h3 class="mt-8">料金‧プラン</h3>
+                <p class="text-sm text-gray-500 mb-2">料金やプランがあれば記載してください。</p>
+                <textarea name="pricing" rows="5" class="textarea-field" placeholder="基本料金：&#10;プラン内容：&#10;オプション：&#10;支払い方法："></textarea>
+
+                <h3 class="mt-8">よくある質問</h3>
+                <p class="text-sm text-gray-500 mb-2">お客様からよく聞かれる質問と回答を記載してください。</p>
+                <textarea name="faq" rows="5" class="textarea-field" placeholder="Q1：&#10;A1：&#10;Q2：&#10;A2：&#10;Q3：&#10;A3："></textarea>
+            </section>
+            
+            <!-- デザインの希望 -->
+            <section class="form-section">
+                <h2>デザインの希望</h2>
+                <h3>全体的なイメージ</h3>
+                <p class="text-sm text-gray-500 mb-2">どのような印象のサイトにしたいか、当てはまるものにチェックしてください。</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="luxury" class="checkbox-input"> 高級感がある‧上品</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="friendly" class="checkbox-input"> 親しみやすい‧温かい</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="trustworthy" class="checkbox-input"> 信頼できる‧安心感がある</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="innovative" class="checkbox-input"> 革新的‧先進的</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="simple" class="checkbox-input"> シンプル‧洗練されている</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="lively" class="checkbox-input"> 活気がある‧元気</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="professional" class="checkbox-input"> 専門的‧プロフェッショナル</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="stylish" class="checkbox-input"> おしゃれ‧スタイリッシュ</label>
+                </div>
+
+                <h3 class="mt-8">好きな色‧使いたい色</h3>
+                <p class="text-sm text-gray-500 mb-2">サイトで使いたい色があれば記載してください。</p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="main_color" class="input-label">メインカラー（基調となる色）</label>
+                        <input type="text" id="main_color" name="main_color" class="input-field">
+                    </div>
+                     <div>
+                        <label for="sub_color" class="input-label">サブカラー（アクセント色）</label>
+                        <input type="text" id="sub_color" name="sub_color" class="input-field">
+                    </div>
+                     <div>
+                        <label for="avoid_color" class="input-label">避けたい色</label>
+                        <input type="text" id="avoid_color" name="avoid_color" class="input-field">
+                    </div>
+                </div>
+
+                <h3 class="mt-8">参考サイト</h3>
+                 <p class="text-sm text-gray-500 mb-2">「こんな感じにしたい」という参考サイトがあればURLを記載してください。</p>
+                 <div class="space-y-4">
+                    <div>
+                        <label for="ref_site_1" class="input-label">参考サイト1</label>
+                        <input type="url" id="ref_site_1" name="ref_site_1" class="input-field mb-2" placeholder="https://example.com">
+                        <textarea name="ref_site_1_points" rows="2" class="textarea-field" placeholder="気に入っている点："></textarea>
+                    </div>
+                     <div>
+                        <label for="ref_site_2" class="input-label">参考サイト2</label>
+                        <input type="url" id="ref_site_2" name="ref_site_2" class="input-field mb-2" placeholder="https://example.com">
+                        <textarea name="ref_site_2_points" rows="2" class="textarea-field" placeholder="気に入っている点："></textarea>
+                    </div>
+                     <div>
+                        <label for="ref_site_3" class="input-label">参考サイト3</label>
+                        <input type="url" id="ref_site_3" name="ref_site_3" class="input-field mb-2" placeholder="https://example.com">
+                        <textarea name="ref_site_3_points" rows="2" class="textarea-field" placeholder="気に入っている点："></textarea>
+                    </div>
+                 </div>
+
+                <h3 class="mt-8">写真‧画像について</h3>
+                 <p class="text-sm text-gray-500 mb-2">使用したい写真や画像について記載してください。</p>
+                 <div class="space-y-2">
+                     <label class="checkbox-label"><input type="checkbox" name="images" value="staff" class="checkbox-input"> 代表者‧スタッフの写真を使いたい</label>
+                     <label class="checkbox-label"><input type="checkbox" name="images" value="product" class="checkbox-input"> 商品‧サービスの写真を使いたい</label>
+                     <label class="checkbox-label"><input type="checkbox" name="images" value="office" class="checkbox-input"> オフィス‧店舗の写真を使いたい</label>
+                     <label class="checkbox-label"><input type="checkbox" name="images" value="stock" class="checkbox-input"> イメージ写真（ストックフォト）を使いたい</label>
+                     <label class="checkbox-label"><input type="checkbox" name="images" value="illust" class="checkbox-input"> イラストを使いたい</label>
+                     <div class="flex items-center">
+                        <label class="checkbox-label"><input type="checkbox" name="images" value="other" class="checkbox-input"> その他：</label>
+                        <input type="text" name="images_other" class="input-field ml-2 flex-grow">
+                    </div>
+                 </div>
+            </section>
+
+            <!-- スマートフォン対応 -->
+            <section class="form-section">
+                <h2>スマートフォン対応</h2>
+                <p class="text-sm text-gray-500 mb-2">スマートフォンでの見やすさについて</p>
+                <div class="space-y-2">
+                     <label class="checkbox-label"><input type="radio" name="sp_access" value="many" class="checkbox-input"> スマートフォンからのアクセスが多いと思う</label>
+                     <label class="checkbox-label"><input type="radio" name="sp_access" value="few" class="checkbox-input"> パソコンからのアクセスが多いと思う</label>
+                     <label class="checkbox-label"><input type="radio" name="sp_access" value="same" class="checkbox-input"> どちらも同じくらいだと思う</label>
+                     <label class="checkbox-label"><input type="radio" name="sp_access" value="unknown" class="checkbox-input"> わからない</label>
+                </div>
+            </section>
+            
+            <!-- 機能・システムの希望 -->
+            <section class="form-section">
+                <h2>機能‧システムの希望</h2>
+                <h3>基本的な機能</h3>
+                <p class="text-sm text-gray-500 mb-2">必要な機能にチェックしてください。</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                     <label class="checkbox-label"><input type="checkbox" name="functions" value="contact" class="checkbox-input"> 問い合わせフォーム</label>
+                     <label class="checkbox-label"><input type="checkbox" name="functions" value="request" class="checkbox-input"> 資料請求フォーム</label>
+                     <label class="checkbox-label"><input type="checkbox" name="functions" value="booking" class="checkbox-input"> 予約システム</label>
+                     <label class="checkbox-label"><input type="checkbox" name="functions" value="payment" class="checkbox-input"> 決済機能</label>
+                     <label class="checkbox-label"><input type="checkbox" name="functions" value="login" class="checkbox-input"> 会員登録‧ログイン</label>
+                     <label class="checkbox-label"><input type="checkbox" name="functions" value="blog" class="checkbox-input"> ブログ‧お知らせ更新</label>
+                     <label class="checkbox-label"><input type="checkbox" name="functions" value="sns" class="checkbox-input"> SNS連携</label>
+                     <label class="checkbox-label"><input type="checkbox" name="functions" value="chat" class="checkbox-input"> チャット機能</label>
+                     <label class="checkbox-label"><input type="checkbox" name="functions" value="multilingual" class="checkbox-input"> 多言語対応</label>
+                </div>
+                 <div class="flex items-center mt-2">
+                    <label class="checkbox-label"><input type="checkbox" name="functions" value="other" class="checkbox-input"> その他：</label>
+                    <input type="text" name="functions_other" class="input-field ml-2 flex-grow">
+                </div>
+
+                <h3 class="mt-8">お問い合わせフォーム項目</h3>
+                 <p class="text-sm text-gray-500 mb-2">お問い合わせフォームで聞きたい項目を記載してください。</p>
+                 <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                     <label class="checkbox-label"><input type="checkbox" name="form_items" value="name" class="checkbox-input"> お名前</label>
+                     <label class="checkbox-label"><input type="checkbox" name="form_items" value="company" class="checkbox-input"> 会社名</label>
+                     <label class="checkbox-label"><input type="checkbox" name="form_items" value="tel" class="checkbox-input"> 電話番号</label>
+                     <label class="checkbox-label"><input type="checkbox" name="form_items" value="email" class="checkbox-input"> メールアドレス</label>
+                     <label class="checkbox-label"><input type="checkbox" name="form_items" value="address" class="checkbox-input"> 住所</label>
+                     <label class="checkbox-label"><input type="checkbox" name="form_items" value="budget" class="checkbox-input"> 予算</label>
+                     <label class="checkbox-label"><input type="checkbox" name="form_items" value="date" class="checkbox-input"> 希望日時</label>
+                     <label class="checkbox-label"><input type="checkbox" name="form_items" value="inquiry_body" class="checkbox-input"> お問い合わせ内容</label>
+                 </div>
+                 <div class="flex items-center mt-2">
+                    <label class="checkbox-label"><input type="checkbox" name="form_items" value="other" class="checkbox-input"> その他：</label>
+                    <input type="text" name="form_items_other" class="input-field ml-2 flex-grow">
+                </div>
+            </section>
+            
+            <!-- 公開後の運用・改善 -->
+            <section class="form-section">
+                <h2>公開後の運⽤‧改善</h2>
+                <h3>更新頻度</h3>
+                <p class="text-sm text-gray-500 mb-2">公開後、どのくらいの頻度で更新したいですか？</p>
+                <div class="space-y-2">
+                     <label class="checkbox-label"><input type="radio" name="update_freq" value="daily" class="checkbox-input"> 毎日更新したい</label>
+                     <label class="checkbox-label"><input type="radio" name="update_freq" value="weekly" class="checkbox-input"> 週1-2回更新したい</label>
+                     <label class="checkbox-label"><input type="radio" name="update_freq" value="monthly" class="checkbox-input"> 月1-2回更新したい</label>
+                     <label class="checkbox-label"><input type="radio" name="update_freq" value="needed" class="checkbox-input"> 必要な時だけ更新したい</label>
+                     <label class="checkbox-label"><input type="radio" name="update_freq" value="none" class="checkbox-input"> 更新は考えていない</label>
+                </div>
+
+                <h3 class="mt-8">自社で更新したい内容</h3>
+                <p class="text-sm text-gray-500 mb-2">自分たちで更新‧管理したい内容があれば記載してください。</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                     <label class="checkbox-label"><input type="checkbox" name="self_update" value="news" class="checkbox-input"> お知らせ‧ニュース</label>
+                     <label class="checkbox-label"><input type="checkbox" name="self_update" value="blog" class="checkbox-input"> ブログ記事</label>
+                     <label class="checkbox-label"><input type="checkbox" name="self_update" value="service" class="checkbox-input"> 商品‧サービス情報</label>
+                     <label class="checkbox-label"><input type="checkbox" name="self_update" value="price" class="checkbox-input"> 料金‧プラン</label>
+                     <label class="checkbox-label"><input type="checkbox" name="self_update" value="achievements" class="checkbox-input"> 実績‧事例</label>
+                     <label class="checkbox-label"><input type="checkbox" name="self_update" value="faq" class="checkbox-input"> よくある質問</label>
+                </div>
+                <div class="flex items-center mt-2">
+                    <label class="checkbox-label"><input type="checkbox" name="self_update" value="other" class="checkbox-input"> その他：</label>
+                    <input type="text" name="self_update_other" class="input-field ml-2 flex-grow">
+                </div>
+                
+                <h3 class="mt-8">公開後のサポート希望</h3>
+                <p class="text-sm text-gray-500 mb-2">公開後、制作会社にお願いしたいサポートがあれば記載してください。</p>
+                <div class="space-y-2">
+                     <label class="checkbox-label"><input type="checkbox" name="support" value="report" class="checkbox-input"> 定期的な効果測定‧報告</label>
+                     <label class="checkbox-label"><input type="checkbox" name="support" value="proposal" class="checkbox-input"> 改善提案</label>
+                     <label class="checkbox-label"><input type="checkbox" name="support" value="trouble" class="checkbox-input"> 技術的なトラブル対応</label>
+                     <label class="checkbox-label"><input type="checkbox" name="support" value="update" class="checkbox-input"> 内容更新の代行</label>
+                     <label class="checkbox-label"><input type="checkbox" name="support" value="none" class="checkbox-input"> 特に必要ない</label>
+                     <div class="flex items-center">
+                        <label class="checkbox-label"><input type="checkbox" name="support" value="other" class="checkbox-input"> その他：</label>
+                        <input type="text" name="support_other" class="input-field ml-2 flex-grow">
+                    </div>
+                </div>
+            </section>
+
+            <div class="mt-12 text-center">
+                <button type="submit" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-12 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    この内容で送信する
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-gray-800 bg-opacity-60 overflow-y-auto h-full w-full hidden items-center justify-center z-50">
+        <div class="relative mx-auto p-6 border w-full max-w-md shadow-lg rounded-xl bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                    <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl leading-6 font-bold text-gray-900">送信完了</h3>
+                <div class="mt-4 px-7 py-3">
+                    <p class="text-sm text-gray-600">
+                        ご入力いただきありがとうございます。<br>内容を送信いたしました。
+                    </p>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="closeModal" class="px-4 py-2 bg-blue-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        閉じる
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('#lp-form');
+        const modal = document.getElementById('successModal');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual submission for this example
+            
+            // This is a demonstration. In a real application, you would collect 
+            // form data and send it to a server here.
+            
+            // Show the success modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        });
+
+        function hideModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        closeModalBtn.addEventListener('click', hideModal);
+
+        // Also close modal if clicking on the background overlay
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                hideModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
+
