@@ -1,0 +1,20 @@
+{
+  "name": "landing-page-settings",
+  "version": "1.0.0",
+  "description": "ランディングページ設定フォーム",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "landing-page",
+    "form",
+    "html"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

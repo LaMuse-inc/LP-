@@ -1,0 +1,17 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/LP-settings.html"
+    },
+    {
+      "src": "/LP-settings.html",
+      "dest": "/LP-settings.html"
+    }
+  ],
+  "functions": {
+    "LP-settings.html": {
+      "memory": 128
+    }
+  }
+}
