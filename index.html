@@ -3,13 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ランディングページ設定</title>
-    <script>
-        // LP-settings.htmlにリダイレクト
-        window.location.href = '/LP-settings.html';
-    </script>
+    <title>サイト制作ヒアリング - 種類選択</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .option-card {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .option-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .option-card:active {
+            transform: translateY(0) scale(0.98);
+        }
+        .card-border-lp {
+            border-left: 5px solid #3b82f6;
+        }
+        .card-border-ec {
+            border-left: 5px solid #10b981;
+        }
+        .card-border-homepage {
+            border-left: 5px solid #8b5cf6;
+        }
+        .note {
+            background-color: #f3f4f6;
+            border-left: 4px solid #9ca3af;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            color: #4b5563;
+        }
+        .note-title {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+    </style>
 </head>
-<body>
-    <p>リダイレクト中...</p>
+<body class="bg-gray-100">
+    <div class="max-w-4xl mx-auto my-10 p-8 md:p-12 bg-white rounded-xl shadow-lg">
+        <header class="text-center mb-8 pb-4 border-b">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">サイト制作ヒアリング</h1>
+            <p class="text-gray-600">制作したいサイトの種類を選択してください</p>
+        </header>
+
+        <div class="note mb-8">
+            <strong class="note-title">ご利用のポイント</strong>
+            <ul class="list-disc list-inside text-sm">
+                <li>各ヒアリングでは、プロジェクトの目的、ターゲット、デザインの方向性などをお聞きします。</li>
+                <li>すべての項目を埋める必要はありません。わからない部分は空欄で構いません。</li>
+                <li>制作会社と相談しながら決めていけます。</li>
+                <li>具体的に書けるところは詳しく記載してください。より良い提案を受けやすくなります。</li>
+            </ul>
+        </div>
+
+        <div class="grid md:grid-cols-1 gap-6 mb-8">
+            <div class="option-card card-border-lp bg-white border border-gray-200 rounded-lg p-6 shadow-sm" onclick="navigateToPage('LP-settings.html')">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <span class="text-2xl text-blue-600">📄</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">ランディングページ</h3>
+                        <p class="text-gray-600 mb-3">商品・サービスの魅力を伝え、コンバージョンを最大化する1ページ完結型のサイト</p>
+                        <span class="inline-block bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">所要時間: 約10分</span>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card card-border-ec bg-white border border-gray-200 rounded-lg p-6 shadow-sm" onclick="navigateToPage('EC-settings.html')">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <span class="text-2xl text-green-600">🛒</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">ECサイト</h3>
+                        <p class="text-gray-600 mb-3">オンラインでの商品販売に特化した、決済機能付きのEコマースサイト</p>
+                        <span class="inline-block bg-green-50 text-green-700 text-sm px-3 py-1 rounded-full">所要時間: 約15分</span>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-card card-border-homepage bg-white border border-gray-200 rounded-lg p-6 shadow-sm" onclick="navigateToPage('homepage-settings.html')">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <span class="text-2xl text-purple-600">🏠</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">ホームページ</h3>
+                        <p class="text-gray-600 mb-3">企業・団体の総合的な情報発信を行う、多ページ構成のコーポレートサイト</p>
+                        <span class="inline-block bg-purple-50 text-purple-700 text-sm px-3 py-1 rounded-full">所要時間: 約12分</span>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center pt-6 border-t">
+            <p class="text-gray-600">ご不明な点がございましたら、<a href="mailto:contact@la-muse.org?subject=お問い合わせ" class="text-blue-600 hover:text-blue-800 underline">お問い合わせ</a>ください</p>
+        </div>
+    </div>
+    
+    <script>
+        function navigateToPage(page) {
+            // クリック時の視覚的フィードバック
+            const card = event.target.closest('.option-card');
+            card.style.transform = 'translateY(0) scale(0.98)';
+            
+            setTimeout(() => {
+                window.location.href = page;
+            }, 150);
+        }
+        
+        // キーボードショートカット
+        document.addEventListener('keydown', function(e) {
+            if (e.key === '1') navigateToPage('LP-settings.html');
+            if (e.key === '2') navigateToPage('EC-settings.html');
+            if (e.key === '3') navigateToPage('homepage-settings.html');
+        });
+    </script>
 </body>
 </html>

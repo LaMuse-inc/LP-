@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECサイト構築要求定義書</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .form-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #374151;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        label.input-label {
+            display: block;
+            font-weight: 500;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+        .input-field, .textarea-field {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .input-field:focus, .textarea-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+        .checkbox-input {
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.5rem;
+            border-radius: 0.25rem;
+            border-color: #d1d5db;
+            color: #3b82f6;
+            cursor: pointer;
+        }
+        .note {
+            background-color: #f3f4f6;
+            border-left: 4px solid #9ca3af;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+        .note-title {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="max-w-4xl mx-auto my-10 p-8 md:p-12 bg-white rounded-xl shadow-lg">
+        <header class="text-center mb-8 pb-4 border-b">
+            <h1 class="text-3xl font-bold text-gray-800">ECサイト構築要求定義書</h1>
+        </header>
+
+        <div class="note">
+            <strong class="note-title">ご記入のポイント</strong>
+            <ul class="list-disc list-inside text-sm">
+                <li>すべての項目を埋める必要はありません。わからない部分は空欄で構いません。</li>
+                <li>制作会社と相談しながら決めていけます。</li>
+                <li>具体的に書けるところは詳しく記載してください。あとで認識違いが起きにくくなります。</li>
+                <li>より良い提案を受けやすくなります。</li>
+            </ul>
+        </div>
+
+        <form id="ec-form" action="https://formspree.io/f/myzngyzy" method="POST">
+            <!-- プロジェクト概要 -->
+            <section class="form-section">
+                <h2>プロジェクト概要</h2>
+                <div class="mb-6">
+                    <label for="project_name" class="input-label">プロジェクト名</label>
+                    <input type="text" id="project_name" name="project_name" class="input-field" value="" placeholder="ECサイト名を入力してください">
+                </div>
+
+                <div>
+                    <label for="background" class="input-label">背景・きっかけ</label>
+                    <p class="text-sm text-gray-500 mb-2">このECサイトを構築する理由を具体的に記載してください。</p>
+                    <textarea id="background" name="background" rows="6" class="textarea-field" placeholder="現在の課題：&#10;解決したいこと：&#10;期待する効果："></textarea>
+                </div>
+            </section>
+
+            <!-- 事業・商品概要 -->
+            <section class="form-section">
+                <h2>事業・商品概要</h2>
+                <div class="mb-6">
+                    <label for="business_overview" class="input-label">事業内容</label>
+                     <p class="text-sm text-gray-500 mb-2">あなたの会社の事業内容について記載してください。</p>
+                    <textarea id="business_overview" name="business_overview" rows="4" class="textarea-field" placeholder="主力事業：&#10;事業規模：&#10;設立年数："></textarea>
+                </div>
+                <div class="mb-6">
+                    <label for="product_overview" class="input-label">販売予定商品・サービス</label>
+                     <p class="text-sm text-gray-500 mb-2">ECサイトで販売する商品やサービスについて詳しく記載してください。</p>
+                    <textarea id="product_overview" name="product_overview" rows="6" class="textarea-field" placeholder="商品カテゴリ：&#10;商品数（予定）：&#10;価格帯：&#10;商品の特徴：&#10;ターゲット層："></textarea>
+                </div>
+                <div class="mb-6">
+                    <label for="ec_experience" class="input-label">EC事業の経験</label>
+                    <div class="space-y-2">
+                        <label class="checkbox-label"><input type="radio" name="ec_experience" value="first_time" class="checkbox-input"> 初めてのEC事業</label>
+                        <label class="checkbox-label"><input type="radio" name="ec_experience" value="existing_other" class="checkbox-input"> 他のプラットフォームで販売経験あり</label>
+                        <label class="checkbox-label"><input type="radio" name="ec_experience" value="existing_own" class="checkbox-input"> 自社ECサイトの運営経験あり</label>
+                        <label class="checkbox-label"><input type="radio" name="ec_experience" value="renewal" class="checkbox-input"> 既存ECサイトのリニューアル</label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 商品管理 -->
+            <section class="form-section">
+                <h2>商品管理</h2>
+                <h3>商品カテゴリ・分類</h3>
+                <p class="text-sm text-gray-500 mb-2">販売予定の商品をどのように分類したいか記載してください。</p>
+                <textarea name="product_categories" rows="4" class="textarea-field" placeholder="大カテゴリ：&#10;中カテゴリ：&#10;小カテゴリ：&#10;特別な分類方法："></textarea>
+
+                <h3 class="mt-8">商品登録・管理</h3>
+                <p class="text-sm text-gray-500 mb-2">商品の登録や管理について希望があれば記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="product_management" value="bulk_upload" class="checkbox-input"> CSV一括登録機能</label>
+                    <label class="checkbox-label"><input type="checkbox" name="product_management" value="inventory" class="checkbox-input"> 在庫管理機能</label>
+                    <label class="checkbox-label"><input type="checkbox" name="product_management" value="variants" class="checkbox-input"> 商品バリエーション管理（サイズ・色など）</label>
+                    <label class="checkbox-label"><input type="checkbox" name="product_management" value="related" class="checkbox-input"> 関連商品・おすすめ商品表示</label>
+                    <label class="checkbox-label"><input type="checkbox" name="product_management" value="reviews" class="checkbox-input"> 商品レビュー・評価機能</label>
+                    <label class="checkbox-label"><input type="checkbox" name="product_management" value="wishlist" class="checkbox-input"> お気に入り・ウィッシュリスト機能</label>
+                </div>
+
+                <h3 class="mt-8">在庫管理</h3>
+                <p class="text-sm text-gray-500 mb-2">在庫管理の方法について記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="radio" name="inventory_method" value="manual" class="checkbox-input"> 手動で在庫数を管理</label>
+                    <label class="checkbox-label"><input type="radio" name="inventory_method" value="auto" class="checkbox-input"> 注文時に自動で在庫数を減算</label>
+                    <label class="checkbox-label"><input type="radio" name="inventory_method" value="external" class="checkbox-input"> 外部システムと連携</label>
+                    <label class="checkbox-label"><input type="radio" name="inventory_method" value="unlimited" class="checkbox-input"> 在庫管理は不要（デジタル商品など）</label>
+                </div>
+            </section>
+
+            <!-- 決済システム -->
+            <section class="form-section">
+                <h2>決済システム</h2>
+                <h3>対応決済方法</h3>
+                <p class="text-sm text-gray-500 mb-2">お客様に提供したい決済方法を選択してください。</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                    <label class="checkbox-label"><input type="checkbox" name="payment_methods" value="credit" class="checkbox-input"> クレジットカード</label>
+                    <label class="checkbox-label"><input type="checkbox" name="payment_methods" value="bank" class="checkbox-input"> 銀行振込</label>
+                    <label class="checkbox-label"><input type="checkbox" name="payment_methods" value="cod" class="checkbox-input"> 代金引換</label>
+                    <label class="checkbox-label"><input type="checkbox" name="payment_methods" value="convenience" class="checkbox-input"> コンビニ決済</label>
+                    <label class="checkbox-label"><input type="checkbox" name="payment_methods" value="paypal" class="checkbox-input"> PayPal</label>
+                    <label class="checkbox-label"><input type="checkbox" name="payment_methods" value="amazon_pay" class="checkbox-input"> Amazon Pay</label>
+                    <label class="checkbox-label"><input type="checkbox" name="payment_methods" value="paypay" class="checkbox-input"> PayPay</label>
+                    <label class="checkbox-label"><input type="checkbox" name="payment_methods" value="line_pay" class="checkbox-input"> LINE Pay</label>
+                    <label class="checkbox-label"><input type="checkbox" name="payment_methods" value="rakuten_pay" class="checkbox-input"> 楽天ペイ</label>
+                </div>
+
+                <h3 class="mt-8">決済代行サービス</h3>
+                <p class="text-sm text-gray-500 mb-2">希望する決済代行サービスがあれば選択してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="radio" name="payment_service" value="stripe" class="checkbox-input"> Stripe</label>
+                    <label class="checkbox-label"><input type="radio" name="payment_service" value="square" class="checkbox-input"> Square</label>
+                    <label class="checkbox-label"><input type="radio" name="payment_service" value="payjp" class="checkbox-input"> PAY.JP</label>
+                    <label class="checkbox-label"><input type="radio" name="payment_service" value="gmo" class="checkbox-input"> GMOペイメントゲートウェイ</label>
+                    <label class="checkbox-label"><input type="radio" name="payment_service" value="softbank" class="checkbox-input"> SBペイメントサービス</label>
+                    <label class="checkbox-label"><input type="radio" name="payment_service" value="undecided" class="checkbox-input"> 未定（相談したい）</label>
+                </div>
+
+                <h3 class="mt-8">セキュリティ要件</h3>
+                <p class="text-sm text-gray-500 mb-2">セキュリティに関する要件があれば記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="security" value="ssl" class="checkbox-input"> SSL証明書の導入</label>
+                    <label class="checkbox-label"><input type="checkbox" name="security" value="pci_dss" class="checkbox-input"> PCI DSS準拠</label>
+                    <label class="checkbox-label"><input type="checkbox" name="security" value="fraud" class="checkbox-input"> 不正検知機能</label>
+                    <label class="checkbox-label"><input type="checkbox" name="security" value="3d_secure" class="checkbox-input"> 3Dセキュア対応</label>
+                </div>
+            </section>
+
+            <!-- 顧客管理・会員機能 -->
+            <section class="form-section">
+                <h2>顧客管理・会員機能</h2>
+                <h3>会員登録</h3>
+                <p class="text-sm text-gray-500 mb-2">会員機能について希望を記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="radio" name="membership" value="required" class="checkbox-input"> 会員登録必須</label>
+                    <label class="checkbox-label"><input type="radio" name="membership" value="optional" class="checkbox-input"> 会員登録任意（ゲスト購入可能）</label>
+                    <label class="checkbox-label"><input type="radio" name="membership" value="guest_only" class="checkbox-input"> ゲスト購入のみ</label>
+                </div>
+
+                <h3 class="mt-8">会員機能</h3>
+                <p class="text-sm text-gray-500 mb-2">提供したい会員機能を選択してください。</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                    <label class="checkbox-label"><input type="checkbox" name="member_features" value="mypage" class="checkbox-input"> マイページ</label>
+                    <label class="checkbox-label"><input type="checkbox" name="member_features" value="order_history" class="checkbox-input"> 注文履歴</label>
+                    <label class="checkbox-label"><input type="checkbox" name="member_features" value="address_book" class="checkbox-input"> アドレス帳</label>
+                    <label class="checkbox-label"><input type="checkbox" name="member_features" value="wishlist" class="checkbox-input"> お気に入りリスト</label>
+                    <label class="checkbox-label"><input type="checkbox" name="member_features" value="points" class="checkbox-input"> ポイント機能</label>
+                    <label class="checkbox-label"><input type="checkbox" name="member_features" value="coupons" class="checkbox-input"> クーポン機能</label>
+                    <label class="checkbox-label"><input type="checkbox" name="member_features" value="newsletter" class="checkbox-input"> メルマガ配信</label>
+                    <label class="checkbox-label"><input type="checkbox" name="member_features" value="sns_login" class="checkbox-input"> SNSログイン</label>
+                </div>
+
+                <h3 class="mt-8">顧客データ管理</h3>
+                <p class="text-sm text-gray-500 mb-2">顧客データの管理について記載してください。</p>
+                <textarea name="customer_data" rows="4" class="textarea-field" placeholder="収集したい顧客情報：&#10;データの活用方法：&#10;プライバシーポリシーの要件："></textarea>
+            </section>
+
+
+
+            <!-- マーケティング機能 -->
+            <section class="form-section">
+                <h2>マーケティング機能</h2>
+                <h3>プロモーション機能</h3>
+                <p class="text-sm text-gray-500 mb-2">実装したいプロモーション機能を選択してください。</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                    <label class="checkbox-label"><input type="checkbox" name="promotion" value="coupons" class="checkbox-input"> クーポン機能</label>
+                    <label class="checkbox-label"><input type="checkbox" name="promotion" value="discount" class="checkbox-input"> 割引機能</label>
+                    <label class="checkbox-label"><input type="checkbox" name="promotion" value="points" class="checkbox-input"> ポイント制度</label>
+                    <label class="checkbox-label"><input type="checkbox" name="promotion" value="bulk_discount" class="checkbox-input"> まとめ買い割引</label>
+                    <label class="checkbox-label"><input type="checkbox" name="promotion" value="member_discount" class="checkbox-input"> 会員限定価格</label>
+                    <label class="checkbox-label"><input type="checkbox" name="promotion" value="time_sale" class="checkbox-input"> タイムセール</label>
+
+                    <label class="checkbox-label"><input type="checkbox" name="promotion" value="gift" class="checkbox-input"> ギフト機能</label>
+                </div>
+
+                <h3 class="mt-8">メール配信・通知</h3>
+                <p class="text-sm text-gray-500 mb-2">メール配信や通知機能について記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="email_features" value="order_confirm" class="checkbox-input"> 注文確認メール</label>
+
+                    <label class="checkbox-label"><input type="checkbox" name="email_features" value="newsletter" class="checkbox-input"> メルマガ配信</label>
+                    <label class="checkbox-label"><input type="checkbox" name="email_features" value="cart_abandon" class="checkbox-input"> カゴ落ちメール</label>
+                    <label class="checkbox-label"><input type="checkbox" name="email_features" value="restock" class="checkbox-input"> 再入荷通知</label>
+                    <label class="checkbox-label"><input type="checkbox" name="email_features" value="birthday" class="checkbox-input"> 誕生日メール</label>
+                </div>
+
+                <h3 class="mt-8">SNS・外部連携</h3>
+                <p class="text-sm text-gray-500 mb-2">SNSや外部サービスとの連携について記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="sns_integration" value="facebook" class="checkbox-input"> Facebook連携</label>
+                    <label class="checkbox-label"><input type="checkbox" name="sns_integration" value="instagram" class="checkbox-input"> Instagram連携</label>
+                    <label class="checkbox-label"><input type="checkbox" name="sns_integration" value="twitter" class="checkbox-input"> Twitter連携</label>
+                    <label class="checkbox-label"><input type="checkbox" name="sns_integration" value="line" class="checkbox-input"> LINE連携</label>
+                    <label class="checkbox-label"><input type="checkbox" name="sns_integration" value="google_analytics" class="checkbox-input"> Google Analytics</label>
+                    <label class="checkbox-label"><input type="checkbox" name="sns_integration" value="google_ads" class="checkbox-input"> Google広告</label>
+                </div>
+            </section>
+
+            <!-- 運営・管理機能 -->
+            <section class="form-section">
+                <h2>運営・管理機能</h2>
+                <h3>注文管理</h3>
+                <p class="text-sm text-gray-500 mb-2">注文管理に必要な機能を選択してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="order_management" value="status_update" class="checkbox-input"> 注文ステータス管理</label>
+                    <label class="checkbox-label"><input type="checkbox" name="order_management" value="cancel" class="checkbox-input"> 注文キャンセル機能</label>
+                    <label class="checkbox-label"><input type="checkbox" name="order_management" value="return" class="checkbox-input"> 返品・交換管理</label>
+                    <label class="checkbox-label"><input type="checkbox" name="order_management" value="invoice" class="checkbox-input"> 請求書発行</label>
+                    <label class="checkbox-label"><input type="checkbox" name="order_management" value="export" class="checkbox-input"> 注文データエクスポート</label>
+                </div>
+
+                <h3 class="mt-8">売上・分析機能</h3>
+                <p class="text-sm text-gray-500 mb-2">売上分析やレポート機能について記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="analytics" value="sales_report" class="checkbox-input"> 売上レポート</label>
+                    <label class="checkbox-label"><input type="checkbox" name="analytics" value="product_analysis" class="checkbox-input"> 商品別売上分析</label>
+                    <label class="checkbox-label"><input type="checkbox" name="analytics" value="customer_analysis" class="checkbox-input"> 顧客分析</label>
+                    <label class="checkbox-label"><input type="checkbox" name="analytics" value="access_analysis" class="checkbox-input"> アクセス解析</label>
+                    <label class="checkbox-label"><input type="checkbox" name="analytics" value="conversion" class="checkbox-input"> コンバージョン分析</label>
+                </div>
+
+                <h3 class="mt-8">管理者権限</h3>
+                <p class="text-sm text-gray-500 mb-2">管理者の権限設定について記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="radio" name="admin_roles" value="single" class="checkbox-input"> 管理者は1人のみ</label>
+                    <label class="checkbox-label"><input type="radio" name="admin_roles" value="multiple_same" class="checkbox-input"> 複数管理者（同じ権限）</label>
+                    <label class="checkbox-label"><input type="radio" name="admin_roles" value="multiple_different" class="checkbox-input"> 複数管理者（権限レベル分け）</label>
+                </div>
+            </section>
+
+            <!-- デザイン・UI/UX -->
+            <section class="form-section">
+                <h2>デザイン・UI/UX</h2>
+                <h3>全体的なイメージ</h3>
+                <p class="text-sm text-gray-500 mb-2">どのような印象のECサイトにしたいか、当てはまるものにチェックしてください。</p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="luxury" class="checkbox-input"> 高級感がある・上品</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="friendly" class="checkbox-input"> 親しみやすい・温かい</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="trustworthy" class="checkbox-input"> 信頼できる・安心感がある</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="modern" class="checkbox-input"> モダン・洗練されている</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="simple" class="checkbox-input"> シンプル・ミニマル</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="colorful" class="checkbox-input"> カラフル・ポップ</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="professional" class="checkbox-input"> プロフェッショナル</label>
+                     <label class="checkbox-label"><input type="checkbox" name="design_image" value="unique" class="checkbox-input"> 個性的・オリジナル</label>
+                </div>
+
+                <h3 class="mt-8">参考サイト</h3>
+                 <p class="text-sm text-gray-500 mb-2">「こんな感じにしたい」という参考ECサイトがあればURLを記載してください。</p>
+                 <div class="space-y-4">
+                    <div>
+                        <label for="ref_site_1" class="input-label">参考サイト1</label>
+                        <input type="url" id="ref_site_1" name="ref_site_1" class="input-field mb-2" placeholder="https://example.com">
+                        <textarea name="ref_site_1_points" rows="2" class="textarea-field" placeholder="気に入っている点："></textarea>
+                    </div>
+                     <div>
+                        <label for="ref_site_2" class="input-label">参考サイト2</label>
+                        <input type="url" id="ref_site_2" name="ref_site_2" class="input-field mb-2" placeholder="https://example.com">
+                        <textarea name="ref_site_2_points" rows="2" class="textarea-field" placeholder="気に入っている点："></textarea>
+                    </div>
+                 </div>
+
+                <h3 class="mt-8">レスポンシブ対応</h3>
+                <p class="text-sm text-gray-500 mb-2">スマートフォンでの利用について</p>
+                <div class="space-y-2">
+                     <label class="checkbox-label"><input type="radio" name="mobile_usage" value="high" class="checkbox-input"> スマートフォンからの利用が多いと予想</label>
+                     <label class="checkbox-label"><input type="radio" name="mobile_usage" value="low" class="checkbox-input"> パソコンからの利用が多いと予想</label>
+                     <label class="checkbox-label"><input type="radio" name="mobile_usage" value="equal" class="checkbox-input"> どちらも同じくらいと予想</label>
+                     <label class="checkbox-label"><input type="radio" name="mobile_usage" value="unknown" class="checkbox-input"> わからない</label>
+                </div>
+            </section>
+
+            <!-- SEO・集客 -->
+            <section class="form-section">
+                <h2>SEO・集客</h2>
+                <h3>SEO対策</h3>
+                <p class="text-sm text-gray-500 mb-2">SEO対策について希望があれば記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="seo" value="basic" class="checkbox-input"> 基本的なSEO対策</label>
+                    <label class="checkbox-label"><input type="checkbox" name="seo" value="keywords" class="checkbox-input"> 特定キーワードでの上位表示対策</label>
+                    <label class="checkbox-label"><input type="checkbox" name="seo" value="local" class="checkbox-input"> ローカルSEO対策</label>
+                    <label class="checkbox-label"><input type="checkbox" name="seo" value="structured" class="checkbox-input"> 構造化データ対応</label>
+                </div>
+                <div class="mt-4">
+                    <label for="target_keywords" class="input-label">狙いたいキーワード</label>
+                    <textarea name="target_keywords" rows="3" class="textarea-field" placeholder="例：オーガニック化粧品、無添加スキンケア"></textarea>
+                </div>
+
+                <h3 class="mt-8">集客方法</h3>
+                <p class="text-sm text-gray-500 mb-2">予定している集客方法を選択してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="marketing_channels" value="seo" class="checkbox-input"> SEO（検索エンジン最適化）</label>
+                    <label class="checkbox-label"><input type="checkbox" name="marketing_channels" value="google_ads" class="checkbox-input"> Google広告</label>
+                    <label class="checkbox-label"><input type="checkbox" name="marketing_channels" value="facebook_ads" class="checkbox-input"> Facebook・Instagram広告</label>
+                    <label class="checkbox-label"><input type="checkbox" name="marketing_channels" value="sns" class="checkbox-input"> SNSマーケティング</label>
+                    <label class="checkbox-label"><input type="checkbox" name="marketing_channels" value="email" class="checkbox-input"> メールマーケティング</label>
+                    <label class="checkbox-label"><input type="checkbox" name="marketing_channels" value="affiliate" class="checkbox-input"> アフィリエイト</label>
+                    <label class="checkbox-label"><input type="checkbox" name="marketing_channels" value="influencer" class="checkbox-input"> インフルエンサーマーケティング</label>
+                </div>
+            </section>
+
+            <!-- 技術要件 -->
+            <section class="form-section">
+                <h2>技術要件</h2>
+                <h3>プラットフォーム</h3>
+                <p class="text-sm text-gray-500 mb-2">希望するECプラットフォームがあれば選択してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="radio" name="platform" value="shopify" class="checkbox-input"> Shopify</label>
+                    <label class="checkbox-label"><input type="radio" name="platform" value="woocommerce" class="checkbox-input"> WooCommerce（WordPress）</label>
+                    <label class="checkbox-label"><input type="radio" name="platform" value="magento" class="checkbox-input"> Magento</label>
+                    <label class="checkbox-label"><input type="radio" name="platform" value="ec_cube" class="checkbox-input"> EC-CUBE</label>
+                    <label class="checkbox-label"><input type="radio" name="platform" value="custom" class="checkbox-input"> フルスクラッチ開発</label>
+                    <label class="checkbox-label"><input type="radio" name="platform" value="undecided" class="checkbox-input"> 未定（相談したい）</label>
+                </div>
+
+                <h3 class="mt-8">外部システム連携</h3>
+                <p class="text-sm text-gray-500 mb-2">連携が必要な外部システムがあれば記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="integrations" value="accounting" class="checkbox-input"> 会計システム</label>
+                    <label class="checkbox-label"><input type="checkbox" name="integrations" value="inventory" class="checkbox-input"> 在庫管理システム</label>
+                    <label class="checkbox-label"><input type="checkbox" name="integrations" value="crm" class="checkbox-input"> CRMシステム</label>
+                    <label class="checkbox-label"><input type="checkbox" name="integrations" value="pos" class="checkbox-input"> POSシステム</label>
+                    <label class="checkbox-label"><input type="checkbox" name="integrations" value="erp" class="checkbox-input"> ERPシステム</label>
+                </div>
+
+                <h3 class="mt-8">セキュリティ・保守</h3>
+                <p class="text-sm text-gray-500 mb-2">セキュリティや保守について記載してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="security_maintenance" value="backup" class="checkbox-input"> 定期バックアップ</label>
+                    <label class="checkbox-label"><input type="checkbox" name="security_maintenance" value="updates" class="checkbox-input"> セキュリティアップデート</label>
+                    <label class="checkbox-label"><input type="checkbox" name="security_maintenance" value="monitoring" class="checkbox-input"> サイト監視</label>
+                    <label class="checkbox-label"><input type="checkbox" name="security_maintenance" value="support" class="checkbox-input"> 技術サポート</label>
+                </div>
+            </section>
+
+            <!-- 運営体制 -->
+            <section class="form-section">
+                <h2>運営体制</h2>
+                <h3>運営担当者</h3>
+                <p class="text-sm text-gray-500 mb-2">ECサイトの運営体制について記載してください。</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="operation_staff" class="input-label">運営担当者数</label>
+                        <input type="text" id="operation_staff" name="operation_staff" class="input-field" placeholder="例：3名">
+                    </div>
+                    <div>
+                        <label for="operation_experience" class="input-label">EC運営経験</label>
+                        <div class="space-y-2">
+                            <label class="checkbox-label"><input type="radio" name="operation_experience" value="experienced" class="checkbox-input"> 経験豊富</label>
+                            <label class="checkbox-label"><input type="radio" name="operation_experience" value="some" class="checkbox-input"> 多少の経験あり</label>
+                            <label class="checkbox-label"><input type="radio" name="operation_experience" value="beginner" class="checkbox-input"> 初心者</label>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-8">サポート希望</h3>
+                <p class="text-sm text-gray-500 mb-2">運営開始後に希望するサポートを選択してください。</p>
+                <div class="space-y-2">
+                    <label class="checkbox-label"><input type="checkbox" name="support_needs" value="training" class="checkbox-input"> 操作研修・トレーニング</label>
+                    <label class="checkbox-label"><input type="checkbox" name="support_needs" value="consulting" class="checkbox-input"> 運営コンサルティング</label>
+                    <label class="checkbox-label"><input type="checkbox" name="support_needs" value="marketing" class="checkbox-input"> マーケティング支援</label>
+                    <label class="checkbox-label"><input type="checkbox" name="support_needs" value="maintenance" class="checkbox-input"> 技術保守・メンテナンス</label>
+                    <label class="checkbox-label"><input type="checkbox" name="support_needs" value="updates" class="checkbox-input"> 定期的な機能追加・改善</label>
+                </div>
+            </section>
+
+            <!-- 連絡先情報 -->
+            <section class="form-section">
+                <h2>連絡先情報</h2>
+                <p class="text-sm text-gray-500 mb-4">ご連絡先をご記入ください。</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="email" class="input-label">メールアドレス <span class="text-red-500">*</span></label>
+                        <input type="email" id="email" name="email" class="input-field" required placeholder="example@email.com">
+                    </div>
+                    <div>
+                        <label for="company_name" class="input-label">会社名・組織名</label>
+                        <input type="text" id="company_name" name="company_name" class="input-field" placeholder="株式会社〇〇">
+                    </div>
+                    <div>
+                        <label for="contact_name" class="input-label">ご担当者名</label>
+                        <input type="text" id="contact_name" name="contact_name" class="input-field" placeholder="山田 太郎">
+                    </div>
+                    <div>
+                        <label for="contact_tel" class="input-label">電話番号</label>
+                        <input type="tel" id="contact_tel" name="contact_tel" class="input-field" placeholder="03-1234-5678">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="message" class="input-label">その他ご要望・備考</label>
+                        <textarea id="message" name="message" rows="4" class="textarea-field" placeholder="その他、ご要望や補足事項があれば記載してください"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <div class="mt-12 text-center">
+                <button type="submit" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-12 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    この内容で送信する
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-gray-800 bg-opacity-60 overflow-y-auto h-full w-full hidden items-center justify-center z-50">
+        <div class="relative mx-auto p-6 border w-full max-w-md shadow-lg rounded-xl bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                    <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl leading-6 font-bold text-gray-900">送信完了</h3>
+                <div class="mt-4 px-7 py-3">
+                    <p class="text-sm text-gray-600">
+                        ご入力いただきありがとうございます。<br>内容を送信いたしました。
+                    </p>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="closeModal" class="px-4 py-2 bg-blue-600 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        閉じる
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.querySelector('#ec-form');
+        const modal = document.getElementById('successModal');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = '送信中...';
+            submitButton.disabled = true;
+            
+            // Collect form data
+            const formData = new FormData(form);
+            
+            // Send to Formspree using AJAX
+            fetch('https://formspree.io/f/myzngyzy', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success - show modal
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    form.reset(); // Clear form
+                } else {
+                    throw new Error('送信に失敗しました');
+                }
+            })
+            .catch(error => {
+                // Error handling
+                alert('送信エラーが発生しました。しばらく時間をおいて再度お試しください。');
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                // Reset button state
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            });
+        });
+
+        function hideModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        closeModalBtn.addEventListener('click', hideModal);
+
+        // Also close modal if clicking on the background overlay
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                hideModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
