@@ -638,8 +638,45 @@
         const closeModalBtn = document.getElementById('closeModal');
 
         form.addEventListener('submit', function(event) {
-            // Allow form to submit to Formspree
-            // The form will redirect to Formspree's thank you page after submission
+            event.preventDefault(); // Prevent default form submission
+            
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = '送信中...';
+            submitButton.disabled = true;
+            
+            // Collect form data
+            const formData = new FormData(form);
+            
+            // Send to Formspree using AJAX
+            fetch('https://formspree.io/f/myzngyzy', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success - show modal
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    form.reset(); // Clear form
+                } else {
+                    throw new Error('送信に失敗しました');
+                }
+            })
+            .catch(error => {
+                // Error handling
+                alert('送信エラーが発生しました。しばらく時間をおいて再度お試しください。');
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                // Reset button state
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            });
         });
 
         function hideModal() {
