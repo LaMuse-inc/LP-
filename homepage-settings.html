@@ -6,112 +6,160 @@
     <title>ホームページ制作ヒアリングシート</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
         .form-section {
-            @apply bg-white rounded-lg shadow-md p-6 mb-8;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e5e7eb;
         }
-        .input-field {
-            @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200;
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
-        .textarea-field {
-            @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 resize-vertical;
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            border-left: 5px solid #3b82f6;
+            padding-left: 0.75rem;
+            margin-bottom: 1.5rem;
         }
-        .input-label {
-            @apply block text-sm font-semibold text-gray-700 mb-2;
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #374151;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        label.input-label {
+            display: block;
+            font-weight: 500;
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+        }
+        .input-field, .textarea-field {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .input-field:focus, .textarea-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
         }
         .checkbox-label {
-            @apply flex items-center text-sm text-gray-700 cursor-pointer hover:text-gray-900 transition duration-200;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
         }
         .checkbox-input {
-            @apply mr-3 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded;
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-right: 0.5rem;
+            border-radius: 0.25rem;
+            border-color: #d1d5db;
+            color: #3b82f6;
+            cursor: pointer;
+        }
+        .note {
+            background-color: #f3f4f6;
+            border-left: 4px solid #9ca3af;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+        }
+        .note-title {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
         }
         table {
-            @apply w-full border-collapse border border-gray-300 rounded-lg overflow-hidden;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 0.75rem;
+            text-align: left;
         }
         th {
-            @apply bg-gray-100 border border-gray-300 px-4 py-3 text-left text-sm font-semibold text-gray-700;
-        }
-        td {
-            @apply border border-gray-300 px-4 py-3;
+            background-color: #f9fafb;
+            font-weight: 600;
         }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
-    <div class="container mx-auto px-4 py-8 max-w-4xl">
-        <!-- Header -->
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">ホームページ制作ヒアリングシート</h1>
-            <p class="text-lg text-gray-600 leading-relaxed">
-                効果的なホームページを制作するために、お客様のご要望やビジネスについて詳しくお聞かせください。<br>
-                ご記入いただいた内容をもとに、最適なホームページをご提案いたします。
-            </p>
+<body class="bg-gray-100">
+
+    <div class="max-w-4xl mx-auto my-10 p-8 md:p-12 bg-white rounded-xl shadow-lg">
+        <header class="text-center mb-8 pb-4 border-b">
+            <h1 class="text-3xl font-bold text-gray-800">ホームページ制作ヒアリングシート</h1>
+        </header>
+
+        <div class="note">
+            <strong class="note-title">ご記入のポイント</strong>
+            <ul class="list-disc list-inside text-sm">
+                <li>すべての項目を埋める必要はありません。わからない部分は空欄で構いません。</li>
+                <li>制作会社と相談しながら決めていけます。</li>
+                <li>具体的に書けるところは詳しく記載してください。あとで認識違いが起きにくくなります。</li>
+                <li>より良い提案を受けやすくなります。</li>
+            </ul>
         </div>
 
-        <!-- Note Section -->
-        <div class="bg-blue-50 border-l-4 border-blue-400 p-6 mb-8 rounded-r-lg">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div class="ml-3">
-                    <p class="text-sm text-blue-700">
-                        <strong>ご記入について：</strong>
-                        すべての項目にご記入いただく必要はありません。わからない項目は空欄のままで結構です。
-                        後ほど詳しくお打ち合わせさせていただきます。
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <form id="homepage-form" action="https://formspree.io/f/myzngyzy" method="POST" class="space-y-8">
+        <form id="homepage-form" action="https://formspree.io/f/myzngyzy" method="POST">
             <input type="hidden" name="_subject" value="ホームページ制作ヒアリングシート">
             <input type="hidden" name="form_type" value="homepage">
 
             <!-- プロジェクト概要 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">プロジェクト概要</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="project_name" class="input-label">プロジェクト名・サイト名</label>
-                        <input type="text" id="project_name" name="project_name" class="input-field" placeholder="例：株式会社〇〇 コーポレートサイト">
-                    </div>
-                    <div>
-                        <label for="project_type" class="input-label">サイトの種類</label>
-                        <select id="project_type" name="project_type" class="input-field">
-                            <option value="">選択してください</option>
-                            <option value="corporate">コーポレートサイト（会社紹介）</option>
-                            <option value="service">サービスサイト</option>
-                            <option value="shop">店舗サイト</option>
-                            <option value="portfolio">ポートフォリオサイト</option>
-                            <option value="blog">ブログ・メディアサイト</option>
-                            <option value="recruit">採用サイト</option>
-                            <option value="other">その他</option>
-                        </select>
-                    </div>
+                <h2>プロジェクト概要</h2>
+                <div class="mb-6">
+                    <label for="project_name" class="input-label">プロジェクト名・サイト名</label>
+                    <input type="text" id="project_name" name="project_name" class="input-field" value="" placeholder="例：株式会社〇〇 コーポレートサイト">
+                </div>
 
+                <div class="mb-6">
+                    <label for="project_type" class="input-label">サイトの種類</label>
+                    <select id="project_type" name="project_type" class="input-field">
+                        <option value="">選択してください</option>
+                        <option value="corporate">コーポレートサイト（会社紹介）</option>
+                        <option value="service">サービスサイト</option>
+                        <option value="shop">店舗サイト</option>
+                        <option value="portfolio">ポートフォリオサイト</option>
+                        <option value="blog">ブログ・メディアサイト</option>
+                        <option value="recruit">採用サイト</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="background" class="input-label">背景・きっかけ</label>
+                    <p class="text-sm text-gray-500 mb-2">このホームページを作る理由を具体的に記載してください。</p>
+                    <textarea id="background" name="background" rows="6" class="textarea-field" placeholder="現在の課題：&#10;解決したいこと：&#10;期待する効果："></textarea>
                 </div>
             </section>
 
-            <!-- 事業・サービス概要 -->
+            <!-- 事業‧サービス概要 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">事業・サービス概要</h2>
-                <h3 class="text-lg font-semibold text-gray-700 mb-4">事業内容</h3>
-                <p class="text-sm text-gray-500 mb-2">どのような事業・サービスを行っているか教えてください。</p>
-                <textarea name="business_description" rows="5" class="textarea-field" placeholder="事業内容：&#10;主力商品・サービス：&#10;業界・分野：&#10;設立年・事業歴："></textarea>
-
-                <h3 class="text-lg font-semibold text-gray-700 mb-4 mt-8">会社・代表の特徴</h3>
-                <p class="text-sm text-gray-500 mb-2">あなたの会社や代表者の特徴・強みを教えてください。</p>
-                <textarea name="company_features" rows="5" class="textarea-field" placeholder="会社の特徴・強み：&#10;代表者の経歴・専門性：&#10;従業員数・組織体制：&#10;所在地・営業エリア："></textarea>
-
-                <h3 class="text-lg font-semibold text-gray-700 mb-4 mt-8">提供価値</h3>
-                <p class="text-sm text-gray-500 mb-2">お客様にどのような価値を提供していますか？</p>
-                <textarea name="value_proposition" rows="4" class="textarea-field" placeholder="お客様が得られるメリット：&#10;解決できる課題・悩み：&#10;他社との違い・独自性："></textarea>
+                <h2>事業‧サービス概要</h2>
+                <div class="mb-6">
+                    <label for="service_overview" class="input-label">提供サービス‧商品</label>
+                     <p class="text-sm text-gray-500 mb-2">あなたの会社が提供しているサービスや商品について記載してください。</p>
+                    <textarea id="service_overview" name="service_overview" rows="6" class="textarea-field" placeholder="メインサービス/商品：&#10;サブサービス/商品：&#10;価格帯：&#10;提供形態（B2B/B2C/その他）："></textarea>
+                </div>
             </section>
 
             <!-- サイト構成・ページ構造 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">サイト構成・ページ構造</h2>
+                <h2>サイト構成・ページ構造</h2>
                 <h3 class="text-lg font-semibold text-gray-700 mb-4">必要なページ</h3>
                 <p class="text-sm text-gray-500 mb-2">ホームページに含めたいページにチェックしてください。</p>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -149,7 +197,7 @@
 
             <!-- ターゲット・目的 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">ターゲット・目的</h2>
+                <h2>ターゲット・目的</h2>
                 <h3 class="text-lg font-semibold text-gray-700 mb-4">ホームページの目的</h3>
                 <p class="text-sm text-gray-500 mb-2">ホームページを作る主な目的は何ですか？</p>
                 <div class="space-y-2">
@@ -199,7 +247,7 @@
 
             <!-- 競合他社との差別化ポイント -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">競合他社との差別化ポイント</h2>
+                <h2>競合他社との差別化ポイント</h2>
                 <h3 class="text-lg font-semibold text-gray-700 mb-4">あなたの強み・特徴</h3>
                 <p class="text-sm text-gray-500 mb-4">お客様があなたを選ぶ理由を3つ挙げてください。</p>
                 <div class="space-y-4">
@@ -274,7 +322,7 @@
 
             <!-- コンテンツ・掲載内容 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">コンテンツ・掲載内容</h2>
+                <h2>コンテンツ・掲載内容</h2>
                 <h3 class="text-lg font-semibold text-gray-700 mb-4">トップページの内容</h3>
                 <p class="text-sm text-gray-500 mb-2">トップページに掲載したい内容を記載してください。</p>
                 <textarea name="top_content" rows="6" class="textarea-field" placeholder="メインキャッチコピー（案）：&#10;サブタイトル・説明文：&#10;メインビジュアル（どんな画像・動画を使いたいか）：&#10;重要なお知らせ・新着情報：&#10;主要なサービス・商品の紹介：&#10;お客様の声・実績のアピール："></textarea>
@@ -308,7 +356,7 @@
 
             <!-- デザインの希望 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">デザインの希望</h2>
+                <h2>デザインの希望</h2>
                 <h3 class="text-lg font-semibold text-gray-700 mb-4">全体的なイメージ</h3>
                 <p class="text-sm text-gray-500 mb-2">どのような印象のサイトにしたいか、当てはまるものにチェックしてください。</p>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -377,7 +425,7 @@
 
             <!-- 機能・システム要件 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">機能・システム要件</h2>
+                <h2>機能・システム要件</h2>
                 <h3 class="text-lg font-semibold text-gray-700 mb-4">基本的な機能</h3>
                 <p class="text-sm text-gray-500 mb-2">必要な機能にチェックしてください。</p>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -431,7 +479,7 @@
 
             <!-- SEO・検索エンジン対策 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">SEO・検索エンジン対策</h2>
+                <h2>SEO・検索エンジン対策</h2>
                 <h3 class="text-lg font-semibold text-gray-700 mb-4">検索キーワード</h3>
                 <p class="text-sm text-gray-500 mb-2">お客様にどのようなキーワードで検索して見つけてもらいたいですか？</p>
                 <textarea name="seo_keywords" rows="4" class="textarea-field" placeholder="例：&#10;東京 ホームページ制作&#10;コーポレートサイト 制作会社&#10;ウェブデザイン 格安&#10;レスポンシブ対応 ホームページ"></textarea>
@@ -461,7 +509,7 @@
 
             <!-- スマートフォン対応 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">スマートフォン対応</h2>
+                <h2>スマートフォン対応</h2>
                 <p class="text-sm text-gray-500 mb-2">スマートフォンでの見やすさについて</p>
                 <div class="space-y-2">
                     <label class="checkbox-label"><input type="radio" name="sp_access" value="many" class="checkbox-input"> スマートフォンからのアクセスが多いと思う</label>
@@ -483,7 +531,7 @@
 
             <!-- 運用・保守 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">運用・保守</h2>
+                <h2>運用・保守</h2>
                 <h3 class="text-lg font-semibold text-gray-700 mb-4">更新頻度</h3>
                 <p class="text-sm text-gray-500 mb-2">公開後、どのくらいの頻度で更新したいですか？</p>
                 <div class="space-y-2">
@@ -522,7 +570,7 @@
 
             <!-- 連絡先情報 -->
             <section class="form-section">
-                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">連絡先情報</h2>
+                <h2>連絡先情報</h2>
                 <p class="text-sm text-gray-500 mb-4">ご連絡先をご記入ください。</p>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
